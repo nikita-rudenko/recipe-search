@@ -8,8 +8,9 @@ import 'font-awesome/css/font-awesome.min.css';
 
 class App extends Component {
 	state = {
-		recipes: recipes
-		// url: process.env.REACT_APP_FOOD2FORK_API
+		recipes: recipes,
+		details_id: 35384,
+		url: process.env.REACT_APP_FOOD2FORK_API
 	};
 
 	// async getRecipes() {
@@ -33,8 +34,8 @@ class App extends Component {
 		// console.log(this.state.recipes);
 		return (
 			<>
-				<RecipeList recipes={this.state.recipes} />
-				<RecipeDetails />
+				{/* <RecipeList recipes={this.state.recipes} /> */}
+				<RecipeDetails id={this.state.details_id} />
 			</>
 		);
 	}
