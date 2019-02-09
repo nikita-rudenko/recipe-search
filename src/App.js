@@ -9,26 +9,28 @@ import 'font-awesome/css/font-awesome.min.css';
 class App extends Component {
 	state = {
 		recipes: recipes,
-		details_id: 35384,
-		url: process.env.REACT_APP_FOOD2FORK_API
+		details_id: 35401,
+		url: `https://www.food2fork.com/api/search?key=${
+			process.env.REACT_APP_FOOD2FORK_API
+		}`
 	};
 
-	// async getRecipes() {
-	// 	try {
-	// 		const data = await fetch(this.state.url);
-	// 		const jsonData = await data.json();
+	async getRecipes() {
+		try {
+			const data = await fetch(this.state.url);
+			const jsonData = await data.json();
 
-	// 		this.setState({
-	// 			recipes: jsonData.recipes
-	// 		});
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
-	// }
+			this.setState({
+				recipes: jsonData.recipes
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
-	// componentDidMount() {
-	// 	this.getRecipes();
-	// }
+	componentDidMount() {
+		this.getRecipes();
+	}
 
 	render() {
 		// console.log(this.state.recipes);

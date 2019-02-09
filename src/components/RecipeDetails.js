@@ -12,6 +12,20 @@ export default class RecipeDetails extends Component {
 		};
 	}
 
+	async componentDidMount() {
+		try {
+			const data = await fetch(this.state.url);
+			const jsonData = await data.json();
+			console.log(jsonData);
+
+			this.setState({
+				recipe: jsonData.recipe
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
 	render() {
 		const {
 			image_url,
@@ -46,7 +60,7 @@ export default class RecipeDetails extends Component {
 
 							<a
 								className="btn btn-primary"
-								href={publisher_url}
+								href={source_url}
 								target="_blank"
 								rel="noopener noreferrer">
 								Source
