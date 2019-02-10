@@ -9,7 +9,7 @@ import 'font-awesome/css/font-awesome.min.css';
 class App extends Component {
 	state = {
 		recipes: recipes,
-		details_id: 35382,
+		details_id: 35122,
 		url: `https://www.food2fork.com/api/search?key=${
 			process.env.REACT_APP_FOOD2FORK_API
 		}`,
