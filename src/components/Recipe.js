@@ -10,22 +10,23 @@ export default class Recipe extends Component {
 			recipe_id
 		} = this.props.recipe;
 
+		const { handleDetails } = this.props;
+
 		return (
 			<>
-				<div className="col-10 mx-auto col-md-6 col-lg-4 my-3 flex-fill">
+				<div className="col-10 mx-auto col-md-6 col-lg-4 my-3">
 					<div className="card">
-						<img
-							src={image_url}
-							className="img-card-top"
-							style={{ height: '14rem' }}
-							alt="Recipe."
-						/>
+						<img src={image_url} className="card-img-top" alt="Recipe." />
 						<div className="card-body text-captalize">
 							<h5>{title}</h5>
 							<h6>By {publisher}</h6>
 						</div>
 						<div className="card-footer">
-							<button className="btn btn-info" type="button" name="details">
+							<button
+								className="btn btn-info"
+								type="button"
+								name="details"
+								onClick={handleDetails}>
 								Details
 							</button>
 							<a
