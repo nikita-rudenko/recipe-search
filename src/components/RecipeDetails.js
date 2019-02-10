@@ -2,29 +2,53 @@ import React, { Component } from 'react';
 import { recipe } from '../data/tempDetails';
 
 export default class RecipeDetails extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			recipe: recipe,
-			url: `https://www.food2fork.com/api/get?key=${
-				process.env.REACT_APP_FOOD2FORK_API
-			}&rId=${this.props.id}`
-		};
-	}
+	// constructor(props) {
+	// 	super(props);
+	// 	this.state = {
+	// 		recipe: recipe,
+	// 		url: `https://www.food2fork.com/api/get?key=${
+	// 			process.env.REACT_APP_FOOD2FORK_API
+	// 		}&rId=${this.props.id}`
+	// 	};
+	// }
 
-	async componentDidMount() {
-		try {
-			const data = await fetch(this.state.url);
-			const jsonData = await data.json();
-			console.log(jsonData);
+	// async componentDidMount() {
+	// 	try {
+	// 		const data = await fetch(this.state.url);
+	// 		const jsonData = await data.json();
+	// 		console.log(jsonData);
 
-			this.setState({
-				recipe: jsonData.recipe
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	}
+	// 		this.setState({
+	// 			recipe: jsonData.recipe
+	// 		});
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// }
+
+	state = {
+		recipe: recipe
+	};
+
+	// async componentDidMount() {
+	// 	const id = this.props.id;
+	// 	const url = `https://www.food2fork.com/api/get?key=${
+	// 		process.env.REACT_APP_FOOD2FORK_API
+	// 	}&rId=${id}`;
+	// 	try {
+	// 		const data = await fetch(url);
+	// 		const jsonData = await data.json();
+	// 		console.log(jsonData);
+
+	// 		this.setState(() => {
+	// 			return {
+	// 				recipe: jsonData.recipe
+	// 			};
+	// 		});
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// }
 
 	render() {
 		const {

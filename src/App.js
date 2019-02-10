@@ -9,10 +9,11 @@ import 'font-awesome/css/font-awesome.min.css';
 class App extends Component {
 	state = {
 		recipes: recipes,
-		details_id: 35401,
+		details_id: 35402,
 		url: `https://www.food2fork.com/api/search?key=${
 			process.env.REACT_APP_FOOD2FORK_API
-		}`
+		}`,
+		pageIndex: 0
 	};
 
 	async getRecipes() {
@@ -32,14 +33,19 @@ class App extends Component {
 		this.getRecipes();
 	}
 
+	displayPage = index => {
+		switch (index) {
+			default:
+			case 1:
+				return <RecipeList recipes={this.state.recipes} />;
+			case 0:
+				return <RecipeDetails id={this.state.details_id} />;
+		}
+	};
+
 	render() {
-		// console.log(this.state.recipes);
-		return (
-			<>
-				{/* <RecipeList recipes={this.state.recipes} /> */}
-				<RecipeDetails id={this.state.details_id} />
-			</>
-		);
+		console.log(this.state.recipes);
+		return <>{this.displayPage(this.state.pageIndex)}</>;
 	}
 }
 
