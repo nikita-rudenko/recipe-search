@@ -32,13 +32,13 @@ export default class Recipe extends Component {
 							</button>
 							<a
 								href={source_url}
-								className="btn btn-secondary ml-2"
+								className="btn btn-secondary ml-xs-0 ml-2"
 								target="_blank"
 								rel="noopener noreferrer">
 								Source
 							</a>
 							<div
-								className="pull-right rounded bg-warning p-2 font-weight-bold"
+								className="btn float-right rounded bg-warning"
 								title="Social Rank">
 								{social_rank}
 							</div>

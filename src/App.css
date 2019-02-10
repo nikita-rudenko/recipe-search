@@ -1,3 +1,7 @@
 :root {
 	font-family: 'Open Sans', sans-serif !important;
 }
+
+body {
+	background-color: #f7f7f7 !important;
+}

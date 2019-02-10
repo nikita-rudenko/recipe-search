@@ -4,7 +4,6 @@ import { recipes } from './data/tempList';
 import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
 import 'bootstrap/dist/css/bootstrap.css';
-import 'font-awesome/css/font-awesome.min.css';
 
 class App extends Component {
 	state = {
@@ -13,7 +12,7 @@ class App extends Component {
 		url: `https://www.food2fork.com/api/search?key=${
 			process.env.REACT_APP_FOOD2FORK_API
 		}`,
-		pageIndex: 0
+		pageIndex: 1
 	};
 
 	// async getRecipes() {

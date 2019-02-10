@@ -27,7 +27,8 @@ export default class RecipeDetails extends Component {
 	// }
 
 	state = {
-		recipe: recipe
+		recipe: recipe,
+		isLoading: true
 	};
 
 	// async componentDidMount() {
@@ -40,10 +41,9 @@ export default class RecipeDetails extends Component {
 	// 		const jsonData = await data.json();
 	// 		console.log(jsonData);
 
-	// 		this.setState(() => {
-	// 			return {
-	// 				recipe: jsonData.recipe
-	// 			};
+	// 		this.setState({
+	// 			recipe: jsonData.recipe,
+	// 			isLoading: false
 	// 		});
 	// 	} catch (error) {
 	// 		console.log(error);
