@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Recipe from './Recipe';
 import RecipeSearch from './RecipeSearch';
+import LoadingPage from './LoadingPage';
 
 export default class RecipeList extends Component {
 	render() {
@@ -9,7 +10,8 @@ export default class RecipeList extends Component {
 			handleDetails,
 			value,
 			handleChange,
-			handleSubmit
+			handleSubmit,
+			isLoading
 		} = this.props;
 		// console.log(recipes);
 		return (
@@ -25,17 +27,21 @@ export default class RecipeList extends Component {
 							<h2 className="font-weight-bold text-uppercase">Best Recipes</h2>
 						</div>
 					</div>
-					<div className="row">
-						{recipes.map(recipe => {
-							return (
-								<Recipe
-									key={recipe.recipe_id}
-									recipe={recipe}
-									handleDetails={handleDetails}
-								/>
-							);
-						})}
-					</div>
+					{isLoading ? (
+						<LoadingPage />
+					) : (
+						<div className="row">
+							{recipes.map(recipe => {
+								return (
+									<Recipe
+										key={recipe.recipe_id}
+										recipe={recipe}
+										handleDetails={handleDetails}
+									/>
+								);
+							})}
+						</div>
+					)}
 				</div>
 			</>
 		);

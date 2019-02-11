@@ -17,25 +17,31 @@ class App extends Component {
 		}`,
 		pageIndex: 1,
 		search: '',
-		query: '&q='
+		query: '&q=',
+		isLoading: false
 	};
 
-	// async getRecipes() {
-	// 	try {
-	// 		const data = await fetch(this.state.url);
-	// 		const jsonData = await data.json();
+	async getRecipes() {
+		this.setState({
+			isLoading: true
+		});
+		try {
+			const data = await fetch(this.state.url);
+			const jsonData = await data.json();
+			console.log(jsonData);
 
-	// 		this.setState({
-	// 			recipes: jsonData.recipes
-	// 		});
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
-	// }
+			this.setState({
+				recipes: jsonData.recipes,
+				isLoading: false
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
-	// componentDidMount() {
-	// 	this.getRecipes();
-	// }
+	componentDidMount() {
+		this.getRecipes();
+	}
 
 	displayPage = index => {
 		switch (index) {
@@ -48,6 +54,7 @@ class App extends Component {
 						value={this.state.search}
 						handleChange={this.handleChange}
 						handleSubmit={this.handleSubmit}
+						isLoading={this.state.isLoading}
 					/>
 				);
 			case 0:
@@ -95,7 +102,7 @@ class App extends Component {
 					search: ''
 				};
 			},
-			() => this.getRecipes
+			() => this.getRecipes()
 		);
 	};
 

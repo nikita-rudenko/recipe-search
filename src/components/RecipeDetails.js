@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { recipe } from '../data/tempDetails';
+import LoadingPage from './LoadingPage';
 
 export default class RecipeDetails extends Component {
 	// constructor(props) {
@@ -31,34 +32,34 @@ export default class RecipeDetails extends Component {
 		isLoading: true
 	};
 
-	componentDidMount() {
-		setTimeout(() => {
-			console.log('I have timeouted');
-
-			this.setState({
-				isLoading: false
-			});
-		}, 2000);
-	}
-
-	// async componentDidMount() {
-	// 	const id = this.props.id;
-	// 	const url = `https://www.food2fork.com/api/get?key=${
-	// 		process.env.REACT_APP_FOOD2FORK_API
-	// 	}&rId=${id}`;
-	// 	try {
-	// 		const data = await fetch(url);
-	// 		const jsonData = await data.json();
-	// 		console.log(jsonData);
+	// componentDidMount() {
+	// 	setTimeout(() => {
+	// 		console.log('I have timeouted');
 
 	// 		this.setState({
-	// 			recipe: jsonData.recipe,
 	// 			isLoading: false
 	// 		});
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
+	// 	}, 2000);
 	// }
+
+	async componentDidMount() {
+		const id = this.props.id;
+		const url = `https://www.food2fork.com/api/get?key=${
+			process.env.REACT_APP_FOOD2FORK_API
+		}&rId=${id}`;
+		try {
+			const data = await fetch(url);
+			const jsonData = await data.json();
+			console.log(jsonData);
+
+			this.setState({
+				recipe: jsonData.recipe,
+				isLoading: false
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
 	render() {
 		const {
@@ -75,9 +76,7 @@ export default class RecipeDetails extends Component {
 		return (
 			<>
 				{this.state.isLoading ? (
-					<div>
-						<h1>I'm Loading</h1>
-					</div>
+					<LoadingPage />
 				) : (
 					<div className="container">
 						<div className="row pt-5">
