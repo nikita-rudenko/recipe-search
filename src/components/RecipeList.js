@@ -11,7 +11,8 @@ export default class RecipeList extends Component {
 			value,
 			handleChange,
 			handleSubmit,
-			isLoading
+			isLoading,
+			error
 		} = this.props;
 		// console.log(recipes);
 		return (
@@ -27,6 +28,7 @@ export default class RecipeList extends Component {
 							<h2 className="font-weight-bold text-uppercase">Best Recipes</h2>
 						</div>
 					</div>
+					{error ? <h3 className="text-danger">{error}</h3> : null}
 					{isLoading ? (
 						<LoadingPage />
 					) : (

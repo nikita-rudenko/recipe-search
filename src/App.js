@@ -18,7 +18,8 @@ class App extends Component {
 		pageIndex: 1,
 		search: '',
 		query: '&q=',
-		isLoading: false
+		isLoading: false,
+		error: ''
 	};
 
 	async getRecipes() {
@@ -30,10 +31,17 @@ class App extends Component {
 			const jsonData = await data.json();
 			console.log(jsonData);
 
-			this.setState({
-				recipes: jsonData.recipes,
-				isLoading: false
-			});
+			if (jsonData.recipes.length === 0) {
+				this.setState({
+					error: `Sorry, but your search did not return any results`,
+					isLoading: false
+				});
+			} else {
+				this.setState({
+					recipes: jsonData.recipes,
+					isLoading: false
+				});
+			}
 		} catch (error) {
 			console.log(error);
 		}
@@ -55,6 +63,7 @@ class App extends Component {
 						handleChange={this.handleChange}
 						handleSubmit={this.handleSubmit}
 						isLoading={this.state.isLoading}
+						error={this.state.error}
 					/>
 				);
 			case 0:

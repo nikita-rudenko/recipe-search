@@ -40,7 +40,7 @@ export default class Recipe extends Component {
 							<div
 								className="btn float-right rounded bg-warning"
 								title="Social Rank">
-								{social_rank}
+								{Math.floor(social_rank)}
 							</div>
 						</div>
 					</div>
