@@ -31,6 +31,16 @@ export default class RecipeDetails extends Component {
 		isLoading: true
 	};
 
+	componentDidMount() {
+		setTimeout(() => {
+			console.log('I have timeouted');
+
+			this.setState({
+				isLoading: false
+			});
+		}, 2000);
+	}
+
 	// async componentDidMount() {
 	// 	const id = this.props.id;
 	// 	const url = `https://www.food2fork.com/api/get?key=${
@@ -64,50 +74,60 @@ export default class RecipeDetails extends Component {
 
 		return (
 			<>
-				<div className="container">
-					<div className="row">
-						<div className="col-10 mx-auto col-md-6 my-3">
-							<button
-								type="button"
-								className="btn btn-warning mb-5"
-								onClick={() => handleIndex(1)}>
-								Back to Recipe List
-							</button>
-							<img className="d-block w-100" src={image_url} alt="Dish." />
-						</div>
-						<div className="col-10 mx-auto col-md-6 my-3">
-							<h3>{title}</h3>
-							<h6 className="font-italic">
-								Provided by{' '}
+				{this.state.isLoading ? (
+					<div>
+						<h1>I'm Loading</h1>
+					</div>
+				) : (
+					<div className="container">
+						<div className="row pt-5">
+							<div className="col-10 mx-auto col-md-6 my-3">
+								<button
+									type="button"
+									className="btn btn-warning mb-5"
+									onClick={() => handleIndex(1)}>
+									Back to Recipe List
+								</button>
+								<img
+									className="rounded d-block w-100"
+									src={image_url}
+									alt="Dish."
+								/>
+							</div>
+							<div className="col-10 mx-auto col-md-6 my-3">
+								<h2>{title}</h2>
+								<h6 className="font-italic text-muted">
+									Provided by{' '}
+									<a
+										href={publisher_url}
+										target="_blank"
+										rel="noopener noreferrer">
+										{publisher}
+									</a>
+								</h6>
+
 								<a
-									href={publisher_url}
+									className="btn btn-primary mt-3"
+									href={source_url}
 									target="_blank"
 									rel="noopener noreferrer">
-									{publisher}
+									Source
 								</a>
-							</h6>
 
-							<a
-								className="btn btn-primary"
-								href={source_url}
-								target="_blank"
-								rel="noopener noreferrer">
-								Source
-							</a>
-
-							<h3>Ingredients:</h3>
-							<ul className="list-group mt-4">
-								{ingredients.map((ingredient, index) => {
-									return (
-										<li className="list-group-item" key={index}>
-											{ingredient}
-										</li>
-									);
-								})}
-							</ul>
+								<h4 className="mt-5">Ingredients:</h4>
+								<ul className="list-group mt-3">
+									{ingredients.map((ingredient, index) => {
+										return (
+											<li className="list-group-item" key={index}>
+												{ingredient}
+											</li>
+										);
+									})}
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
+				)}
 			</>
 		);
 	}

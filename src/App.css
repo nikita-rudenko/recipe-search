@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
 :root {
-	font-family: 'Open Sans', sans-serif !important;
+	font-family: 'Noto Sans', sans-serif !important;
 }
 
 body {
-	background-color: #f7f7f7 !important;
+	background-color: #eceaea !important;
+	font-family: 'Noto Sans', sans-serif !important;
 }

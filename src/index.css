@@ -5,8 +5,12 @@
 }
 
 .header {
-	background: rgba(255, 255, 255, 0.18);
-	text-shadow: 2px 2px #242323ec;
+	background: radial-gradient(
+		circle,
+		rgba(136, 134, 134, 0.356) 38%,
+		rgba(180, 180, 180, 0.192) 85%
+	);
+	text-shadow: 2px 2px #242323c4;
 }
 
 .card-img-top {
@@ -16,5 +20,6 @@
 }
 
 .brand {
-	color: #ff1616e3;
+	color: #f72424e3;
+	text-shadow: 2px 2px #242323ec;
 }
